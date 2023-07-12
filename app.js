@@ -5,7 +5,9 @@ const axios = require('axios')
 require('dotenv').config()
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin:"*"
+}))
 app.get('/hints', (req, res) => {
     const searchedLocation = req.query.searchedLocation
     const options = {
