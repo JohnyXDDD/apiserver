@@ -6,7 +6,10 @@ require('dotenv').config()
 
 const app = express()
 app.use(cors({
-    origin:"*"
+    'origin':"*",
+    'Content-Type': 'text/plain',
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
 }))
 app.get('/hints', (req, res) => {
     const searchedLocation = req.query.searchedLocation
