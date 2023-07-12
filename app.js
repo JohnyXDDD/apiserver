@@ -3,18 +3,18 @@ const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
 require('dotenv').config()
-const http=require('http')
 const app = express()
-app.use(cors({
-    'origin':"*",
-    'Content-Type': 'text/plain',
-    'Access-Control-Allow-Origin' : '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
-}))
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next()
-})
+app.use(cors())
+// {
+//     'origin':"*",
+//     'Content-Type': 'text/plain',
+//     'Access-Control-Allow-Origin' : '*',
+//     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+// // }
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next()
+// })
 app.get('/hints', (req, res) => {
     const searchedLocation = req.query.searchedLocation
     const options = {
@@ -44,8 +44,3 @@ app.get('/weather', (req, res) => {
     
 })
 app.listen(port,()=>console.log(`Server running on port ${port}`))
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
-  });
