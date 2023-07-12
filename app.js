@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
 require('dotenv').config()
-
+const http=require('http')
 const app = express()
 app.use(cors({
     'origin':"*",
@@ -44,3 +44,8 @@ app.get('/weather', (req, res) => {
     
 })
 app.listen(port,()=>console.log(`Server running on port ${port}`))
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World');
+  });
