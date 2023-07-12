@@ -11,6 +11,10 @@ app.use(cors({
     'Access-Control-Allow-Origin' : '*',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
 }))
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next()
+})
 app.get('/hints', (req, res) => {
     const searchedLocation = req.query.searchedLocation
     const options = {
